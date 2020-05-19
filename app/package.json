@@ -3,7 +3,6 @@
   "description": "Diamond open source - Built on Eris.",
   "main": "",
   "scripts": {
-    "start": "node index.js"
   },
   "dependencies": {
 
