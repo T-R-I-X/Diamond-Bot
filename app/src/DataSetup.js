@@ -1,6 +1,6 @@
 "use strict";
 
-import Client from './Bot';
+import Bot from './Bot';
 import BotConfig from './configs/customConfig.json';
 
 // If database is enabled then try to connect
