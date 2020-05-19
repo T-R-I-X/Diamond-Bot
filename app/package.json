@@ -9,7 +9,7 @@
 
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "license": "MIT",
   "keywords": [
