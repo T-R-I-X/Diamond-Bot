@@ -1,25 +1,23 @@
-  
 {
-    "name": "diamond",
+    "name": "diamondbot",
     "version": "1.0.0",
-    "description": "No Idea.",
-    "author": "",
-    "link": "",
+    "description": "",
+    "author": "Trixy boi",
     "license": "MIT",
     "engines": {
       "node": ">=8.0.0"
     },
     "dependencies": {
+      "axoncore": "^2.0.0",
       "chalk": "^2.4.2",
       "eris": "git+https://www.github.com/khaazz/eris.git#axoncore",
-      "esm": "^3.2.25",
       "pm2": "^4.2.1"
     },
     "devDependencies": {
       "@axonteam/eslint-config": "^2.2.1",
       "eslint": "^6.8.0"
     },
-    "main": "./index.js",
+    "main": "./src/DataSetup.js",
     "scripts": {
       "start": "node -r esm src/DataSetup.js",
       "start:pm2": "pm2 start scripts/start.config.js"
@@ -30,3 +28,4 @@
     },
     "homepage": ""
   }
+    
