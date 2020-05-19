@@ -27,10 +27,7 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/Khaazz/AxonCore.git"
+      "url": "git+"
     },
-    "bugs": {
-      "url": "https://github.com/Khaazz/AxonCore/issues"
-    },
-    "homepage": "https://github.com/Khaazz/AxonCore#readme"
+    "homepage": ""
   }
