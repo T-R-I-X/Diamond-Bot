@@ -1,6 +1,6 @@
 const { AxonClient } = require('axoncore');
 
-const modules = require('./Modules/index.js');
+const modules = require('./modules/index');
 
 /**
  * Example - Client constructor

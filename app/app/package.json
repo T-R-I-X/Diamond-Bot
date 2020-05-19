@@ -10,7 +10,7 @@
     "dependencies": {
       "axoncore": "^2.0.0",
       "chalk": "^2.4.2",
-      "eris": "git+https://www.github.com/khaazz/eris.git#axoncore",
+      "eris": "^0.13.1",
       "pm2": "^4.2.1"
     },
     "devDependencies": {
