@@ -1,3 +1,5 @@
+"use strict";
+
 import Client from './Bot';
 import BotConfig from './configs/customConfig.json';
 

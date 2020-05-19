@@ -1,3 +1,5 @@
+"use strict";
+
 import { Utils } from 'axoncore';
 
 class BotUtils extends Utils {

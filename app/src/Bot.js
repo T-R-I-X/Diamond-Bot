@@ -1,3 +1,5 @@
+"use strict";
+
 import Eris from 'eris';
 
 import { AxonOptions } from 'axoncore';
