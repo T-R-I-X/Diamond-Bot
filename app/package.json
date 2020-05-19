@@ -1,0 +1,20 @@
+{
+  "name": "diamond",
+  "description": "Diamond open source - Built on Eris.",
+  "main": "",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
