@@ -1,44 +1,40 @@
-import { Utils } from 'axoncore';
+const { Utils } = require('axoncore');
 
-class BotUtils extends Utils {
-    constructor(...args) {
-        super(...args);
+class MyUtils extends Utils {
+    /**
+     * @param {import('axoncore').AxonClient} client
+     */
+    constructor(client) {
+        super(client);
         this.invite = /^(discord.gg\/|discordapp.com\/invite\/)([a-z0-9]+)$/gi;
     }
 
-    // Converts Hex value to a RGB value
+    /**
+     * Convert a hex code into a rgb code
+     *
+     * @param {String} hex -  The base10 number to convert OR the base10 number as a String
+     * @returns {[Number, Number, Number]} rgb color code `[xxx, xxx, xxx]`
+     */
     hexTOrgb(hex) {
-        let num = hex.replace('#', '');
-        num = parseInt(num, 16);
-        return [num >> 16, num >> 8 & 255, num & 255]; 
+        const num = parseInt(hex.replace('#', ''), 16);
+        return [
+            num >> 16,
+            (num >> 8) & 255,
+            num & 255,
+        ];
     }
 
-    // Converts RGB to a Hex value
+    /**
+    * Convert a rgb code into a hex code
+    *
+    * @param {Number} red - RGB value for Red
+    * @param {Number} green - RGB value for Green
+    * @param {Number} blue - RGB value for Blue
+    * @returns {String} Hex color code (6 char) (without #)
+    */
     rgbTOhex(red, green, blue) {
-        return ((blue | green << 8 | red << 16) | 1 << 24).toString(16).slice(1); 
+        return ( (blue | (green << 8) | (red << 16) ) | (1 << 24) ).toString(16).slice(1);
     }
-
-    // Converts a Number to a String
-    numberTOstring(number) {
-        return number.toString()
-    }
-
-    // Converts a String to a Int
-    stringTOint(string) {
-        return parseInt(string)
-    }
-
-    // Filter
-    msgfilter(Filters,msg) {
-        if (Filters.has("DiscordLink")) {
-           if (msg.includes(this.invite)) {
-               msg:Delete()
-           }
-            return
-        } 
-         return
-    }
-    
 }
 
-export default BotUtils;
+module.exports = MyUtils;

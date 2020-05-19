@@ -1,2 +1,4 @@
-export { default as Core } from './Core/index';
-export { default as Private } from './Private/index';
+module.exports = {
+    Core: require('./Core/index'),
+    Private: require('./Private/index'),
+};

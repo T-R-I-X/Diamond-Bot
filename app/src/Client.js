@@ -1,6 +1,6 @@
-import { AxonClient } from 'axoncore';
+const { AxonClient } = require('axoncore');
 
-import * as modules from './modules/index';
+const modules = require('./modules/index');
 
 /**
  * Example - Client constructor
@@ -17,6 +17,9 @@ class Client extends AxonClient {
      */
     constructor(client, axonOptions) {
         super(client, axonOptions, modules);
+
+        this.param = 1; // personal stuff
+        this._param = 2; // personal hidden stuff
     }
 
     /**
@@ -42,7 +45,9 @@ class Client extends AxonClient {
     }
 
     initStatus() {
-
+        // called after ready event
+        // overrides default editStatus
+        // used to setup custom status
         this.botClient.editStatus(null, {
             name: `AxonCore | ${this.settings.prefixes[0]}help`,
             type: 0,
@@ -51,8 +56,9 @@ class Client extends AxonClient {
 
     // disabled
     /**
-     * @param {import('eris').Message} msg
+     * @param {import('discord.js').Message} msg
      * @param {import('axoncore').GuildConfig} guildConfig
+     * @returns {Promise<import('discord.js').Message>}
      */
     // eslint-disable-next-line no-unused-vars
     $sendFullHelp(msg, guildConfig) {
@@ -64,6 +70,7 @@ class Client extends AxonClient {
     /**
      * @param {import('axoncore').Command} command
      * @param {import('axoncore').CommandEnvironment} env
+     * @returns {Promise<import('discord.js').Message>}
      */
     $sendHelp(command, env) {
         // override sendHelp method
@@ -71,4 +78,4 @@ class Client extends AxonClient {
     }
 }
 
-export default Client;
+module.exports = Client;

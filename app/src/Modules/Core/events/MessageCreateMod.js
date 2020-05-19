@@ -1,5 +1,4 @@
-import { Listener } from 'axoncore';
-import { PrivateChannel } from 'eris';
+const { Listener } = require('axoncore');
 
 class MessageCreateMod extends Listener {
     /**
@@ -26,13 +25,12 @@ class MessageCreateMod extends Listener {
      * @param {import('eris').Message} message
      * @param {import('axoncore').GuildConfig} guildConfig
      */
-    execute(message, guildConfig) {
-        if (message.channel instanceof PrivateChannel) {
-            return Promise.resolve();
+    execute(message, guildConfig) { // eslint-disable-line
+        if (guildConfig) {
+            console.log(`Prefix: ${guildConfig.prefixes}`);
         }
-        console.log(`Prefix: ${guildConfig.prefixes}`);
         return Promise.resolve();
     }
 }
 
-export default MessageCreateMod;
+module.exports = MessageCreateMod;

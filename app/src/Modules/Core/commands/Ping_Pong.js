@@ -1,4 +1,4 @@
-import { Command, CommandOptions, CommandPermissions, CommandResponse } from 'axoncore';
+const { Command, CommandOptions, CommandPermissions, CommandResponse } = require('axoncore');
 
 class Pong extends Command {
     /**
@@ -19,7 +19,7 @@ class Pong extends Command {
             usage: 'ping pong',
             examples: ['ping pong'],
         };
- 
+
         /**
          * @type {CommandOptions}
          */
@@ -30,7 +30,7 @@ class Pong extends Command {
             hidden: true,
             sendPermissionMessage: true,
         } );
- 
+
         /**
          * @type {CommandPermissions}
          */
@@ -62,4 +62,4 @@ class Pong extends Command {
     }
 }
 
-export default Pong;
+module.exports = Pong;

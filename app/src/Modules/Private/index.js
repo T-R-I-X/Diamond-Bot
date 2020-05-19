@@ -1,12 +1,12 @@
-import { Module, CommandPermissions } from 'axoncore';
+const { Module, CommandPermissions } = require('axoncore');
 
-import * as commands from './commands/index';
-// import * as listeners from './commands/index';
+const commands = require('./commands/index');
+// const listeners = require('./commands/index');
 
 class Private extends Module {
     /**
      * @param {import('axoncore').AxonClient} client
-     * @param {import('axoncore').ModuleData} [data]
+     * @param {import('axoncore').ModuleData} data
      */
     constructor(client, data = {} ) {
         super(client, data);
@@ -18,7 +18,7 @@ class Private extends Module {
 
         this.info = {
             name: 'Private',
-            description: 'Wowie',
+            description: 'Very Private. Much Dev. Wow.',
         };
 
         /**
@@ -32,4 +32,4 @@ class Private extends Module {
     }
 }
 
-export default Private;
+module.exports = Private;

@@ -1,12 +1,12 @@
-import { Module } from 'axoncore';
+const { Module } = require('axoncore');
 
-import * as commands from './commands/index';
-import * as listeners from './listeners/index';
+const commands = require('./commands/index');
+const listeners = require('./listeners/index');
 
 class Core extends Module {
     /**
      * @param {import('axoncore').AxonClient} client
-     * @param {import('axoncore').ModuleData} [data]
+     * @param {import('axoncore').ModuleData} data
      */
     constructor(client, data = {} ) {
         super(client, data);
@@ -27,4 +27,4 @@ class Core extends Module {
     }
 }
 
-export default Core;
+module.exports = Core;

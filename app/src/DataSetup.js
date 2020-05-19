@@ -1,30 +1,24 @@
-import Bot from './Bot';
-import config from './configs/config.json';
+const Bot = require('./Bot');
+const config = require('./configs/config.json');
 
-// If database is enabled then try to connect
-if (config.settings.db === 1) {
+if (config.settings.db === 2) {
     try {
         const mongoose = require('mongoose');
-        mongoose.connect('mongodb://localhost/DiamondDB', {
+        mongoose.connect('mongodb://localhost/DiamondBot', {
             useCreateIndex: true,
             autoReconnect: true,
         } )
             .then( () => {
-                // No error, connected to database
-                Bot.logger.notice('Connected to the database.');
+                Bot.logger.notice('Can\'t connect ID:1.');
             } )
             .catch(err => {
-                // Something went wrong connecting
-                Bot.logger.fatal(`Could not connect the the database ID:2  \n${err.stack}`);
+                Bot.logger.fatal(`Can\'t connect to database ID:2.\n${err.stack}`);
             } );
     } catch (e) {
-        // Something went wrong in general, might be more than connecting
-        Bot.logger.fatal(`Could not connect the the database ID:3  \n${e.stack}`);
+        Bot.logger.fatal(`Can't connect to database ID:3.\n${e.stack}`);
     }
 }
 
-// Starting Client
 Bot.start();
 
-// Sends a conole log showing that diamond is up and online
 Bot.logger.notice('Diamond is running');

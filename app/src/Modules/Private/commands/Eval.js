@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import nodeUtil from 'util';
+const nodeUtil = require('util');
 
-import {
+const {
     Command,
     CommandPermissions,
     CommandOptions,
     CommandResponse,
     AxonEnums,
-    DiscordEnums,
     Collection,
     Embed,
     Prompt,
@@ -17,12 +16,9 @@ import {
     FunctionQueue,
     AutoQueue,
     AsyncQueue,
-} from 'axoncore';
+} = require('axoncore');
 
 class Eval extends Command {
-    /**
-     * @param {import('axoncore').Module} module
-     */
     constructor(module) {
         super(module);
 
@@ -42,7 +38,7 @@ class Eval extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 1,
-            cooldown: 0,
+            cooldown: null,
         } );
         
         /**
@@ -103,7 +99,6 @@ class Eval extends Command {
      * @param {String} evalString
      */
     cleanUpToken(evalString) {
-        // @ts-ignore
         return evalString.replace(new RegExp(this.bot.token, 'g'), 'Khaaz Baguette');
     }
 
@@ -117,4 +112,4 @@ class Eval extends Command {
     }
 }
 
-export default Eval;
+module.exports = Eval;

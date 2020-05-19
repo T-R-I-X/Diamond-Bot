@@ -1,14 +1,14 @@
-import Eris from 'eris';
+const Eris = require('eris');
 
-import { AxonOptions } from 'axoncore';
+const { AxonOptions } = require('axoncore');
 
-import Client from './Client';
+const Client = require('./Client');
 
-import botConfig from './configs/config.json';
-import secret from './configs/secret.json';
-import lang from './configs/lang.json';
+const botConfig = require('./configs/config.json');
+const secret = require('./configs/secret.json');
+const lang = require('./configs/lang.json');
 
-import MyUtils from './MyUtils';
+const MyUtils = require('./MyUtils');
 
 const axonOptions = new AxonOptions( {
     prefixes: botConfig.prefixes,
@@ -19,16 +19,16 @@ const axonOptions = new AxonOptions( {
     info: botConfig.info,
     staff: botConfig.staff,
     template: botConfig.template,
-    custom: { },
+    custom: {
+        param: 1,
+    },
 },
-// webhooks
 secret.webhooks,
-// extensions
 {
     utils: MyUtils, // use your own Utils
     logger: null, // custom Logger
     DBProvider: null, // custom DB Service
-    DBLocation: `${__dirname}/database/`,
+    DBLocation: `${__dirname}/Database/`,
 
     axonConfig: null,
     guildConfig: null,
@@ -60,4 +60,4 @@ const Bot = new Client(
     axonOptions,
 );
 
-export default Bot;
+module.exports = Bot;

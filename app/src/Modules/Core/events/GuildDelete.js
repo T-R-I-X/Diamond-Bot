@@ -1,4 +1,4 @@
-import { Listener } from 'axoncore';
+const { Listener } = require('axoncore');
 
 class GuildDelete extends Listener {
     /**
@@ -31,4 +31,4 @@ class GuildDelete extends Listener {
     }
 }
 
-export default GuildDelete;
+module.exports = GuildDelete;

@@ -1,6 +1,6 @@
-import { Command, CommandOptions, CommandResponse } from 'axoncore';
+const { Command, CommandOptions, CommandResponse } = require('axoncore');
 
-import Pong from './Ping_Pong.js';
+const Pong = require('./Ping_Pong');
 
 class Ping extends Command {
     /**
@@ -56,4 +56,4 @@ class Ping extends Command {
     }
 }
 
-export default Ping;
+module.exports = Ping;
