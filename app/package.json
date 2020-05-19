@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axoncore": "^2.0.1",
-    "eris": "^0.13.1",
+    "eris": "git+https://www.github.com/khaazz/eris.git#axoncore",
     "chalk": "^4.0.0",
     "pm2": "^4.4.0",
     "eslint": "^6.8.0",
