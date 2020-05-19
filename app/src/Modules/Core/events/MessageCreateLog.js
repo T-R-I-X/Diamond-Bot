@@ -1,8 +1,13 @@
 import { Listener } from 'axoncore';
+import { PrivateChannel, GroupChannel } from 'eris';
 
 class MessageCreateLog extends Listener {
-    constructor(...args) {
-        super(...args);
+    /**
+     * @param {import('axoncore').Module} module
+     * @param {import('axoncore').ListenerData} data
+     */
+    constructor(module, data = {} ) {
+        super(module, data);
 
         /** Event Name (Discord name) */
         this.eventName = 'messageCreate';
@@ -17,11 +22,12 @@ class MessageCreateLog extends Listener {
         };
     }
 
-    execute(message, guildConfig) { // eslint-disable-line no-unused-vars
-        if (!message.channel.guild) {
-            return Promise.resolve();
-        }
-        if (message.webhookID !== undefined) {
+    /**
+     * @param {import('eris').Message} message
+     * @param {import('axoncore').GuildConfig} guildConfig
+     */
+    execute(message, guildConfig) { // eslint-disable-line
+        if (message.channel instanceof PrivateChannel || message.channel instanceof GroupChannel) {
             return Promise.resolve();
         }
         console.log(`Msg ${message.channel.guild.id}`);

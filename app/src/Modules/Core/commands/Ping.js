@@ -1,8 +1,11 @@
 import { Command, CommandOptions, CommandResponse } from 'axoncore';
 
-import Pong from './Ping_Pong';
+import Pong from './Ping_Pong.js';
 
 class Ping extends Command {
+    /**
+     * @param {import('axoncore').Module} module
+     */
     constructor(module) {
         super(module);
 
@@ -23,16 +26,22 @@ class Ping extends Command {
             examples: ['ping'],
         };
 
+        /**
+         * @type {CommandOptions}
+         */
         this.options = new CommandOptions(this, {
             argsMin: 0,
             guildOnly: false,
         } );
     }
-
+    
     init() {
         return [Pong];
     }
 
+    /**
+     * @param {import('axoncore').CommandEnvironment} env
+     */
     async execute( { msg } ) {
         const start = Date.now();
         const mess = await this.sendMessage(msg.channel, 'Pong! ');

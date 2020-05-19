@@ -1,43 +1,46 @@
-"use strict";
-
 import Eris from 'eris';
 
 import { AxonOptions } from 'axoncore';
+
 import Client from './Client';
-import botConfig from './JSON/BotConfig.json';
-import BotUtils from './Utils';
-import Database from './DataSetup'
+
+import botConfig from './configs/config.json';
+import secret from './configs/secret.json';
+import lang from './configs/lang.json';
+
+import MyUtils from './MyUtils';
 
 const axonOptions = new AxonOptions( {
     prefixes: botConfig.prefixes,
     settings: botConfig.settings,
-    "english": {
-        "ERR_BOT_PERM": "Please give me {{permissions}} to do this!",
-        "ERR_CALLER_PERM": "You need {{permissions}} to do that!",
-        "ERR_DESTINATION_PERM": "This user is a moderator/admin so I can't do that!",
-        "ERR_COOLDOWN": "You are on a cooldown! Remaining: **{{cooldown}}**",
-        "ERR_GENERAL": "A error has accured, if you keep having this issue contact the developer team."
-    },
+    lang,
     logo: null,
+
     info: botConfig.info,
     staff: botConfig.staff,
     template: botConfig.template,
-    custom: {
-        param: 1,
-    },
+    custom: { },
 },
+// webhooks
+secret.webhooks,
+// extensions
 {
-    utils: BotUtils,
-    logger: null,
-    DBProvider: 'Mongoose',
-    DBLocation: `${__dirname}/Database/`,
+    utils: MyUtils, // use your own Utils
+    logger: null, // custom Logger
+    DBProvider: null, // custom DB Service
+    DBLocation: `${__dirname}/database/`,
+
     axonConfig: null,
     guildConfig: null,
 } );
 
-
+/**
+ * new AxonClient(token, erisOptions, AxonOptions, modules)
+ *
+ * new Client(token, erisOptions, AxonOptions) => Modules imported in Client
+ */
 const client = new Eris.Client(
-    botConfig["settings"]["token"],
+    secret.bot.token,
     {
         autoreconnect: true,
         defaultImageFormat: 'png',

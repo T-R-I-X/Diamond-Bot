@@ -1,13 +1,15 @@
-// Imports
 import { Module, CommandPermissions } from 'axoncore';
 
 import * as commands from './commands/index';
-// import * as events from './commands/index';
-//
+// import * as listeners from './commands/index';
 
 class Private extends Module {
-    constructor(...args) {
-        super(...args);
+    /**
+     * @param {import('axoncore').AxonClient} client
+     * @param {import('axoncore').ModuleData} [data]
+     */
+    constructor(client, data = {} ) {
+        super(client, data);
 
         this.label = 'Private';
 
@@ -16,9 +18,12 @@ class Private extends Module {
 
         this.info = {
             name: 'Private',
-            description: 'This is private and not to be showed',
+            description: 'Wowie',
         };
 
+        /**
+         * @type {CommandPermissions}
+         */
         this.permissions = new CommandPermissions(this, {}, true);
     }
 
