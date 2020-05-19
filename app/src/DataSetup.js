@@ -1,4 +1,4 @@
-const Bot = require('./Bot');
+const Bot = require('./Bot.js');
 const config = require('./configs/config.json');
 
 if (config.settings.db === 2) {

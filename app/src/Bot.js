@@ -2,13 +2,13 @@ const Eris = require('eris');
 
 const { AxonOptions } = require('axoncore');
 
-const Client = require('./Client');
+const Client = require('./Client.js');
 
 const botConfig = require('./configs/config.json');
 const secret = require('./configs/secret.json');
 const lang = require('./configs/lang.json');
 
-const MyUtils = require('./MyUtils');
+const MyUtils = require('./Utils');
 
 const axonOptions = new AxonOptions( {
     prefixes: botConfig.prefixes,
