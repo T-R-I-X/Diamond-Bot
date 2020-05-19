@@ -5,7 +5,7 @@ import Eris from 'eris';
 import { AxonOptions } from 'axoncore';
 import Client from './Client';
 import botConfig from './JSON/BotConfig.json';
-import Utils from './Utils';
+import BotUtils from './Utils';
 import Database from './DataSetup'
 
 const axonOptions = new AxonOptions( {
@@ -27,7 +27,7 @@ const axonOptions = new AxonOptions( {
     },
 },
 {
-    utils: Utils,
+    utils: BotUtils,
     logger: null,
     DBProvider: 'Mongoose',
     DBLocation: `${__dirname}/Database/`,

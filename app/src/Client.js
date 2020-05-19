@@ -11,12 +11,12 @@ import * as modules from './modules/index';
  * @extends DiamondCore.DiamondClient
  */
 
-class Client extends DiamondClient {
+class Client extends AxonClient {
     constructor(client, axonOptions) {
         super(client, axonOptions, modules);
 
-        this.info = 'This starts AxonClient'; // Says what this is about
-        this.version = '1.0.0'; // Bot version
+        this.param = 1; // personal stuff
+        this._param = 2; // personal hidden stuff
     }
 
     onInit() {
@@ -33,22 +33,26 @@ class Client extends DiamondClient {
 
     initStatus() {
         // called after ready event
-        this.Client.editStatus(null, {
-            name: `${this.settings.prefixes[0]}help`,
+        // overrides default editStatus
+        // used to setup custom status
+        this.botClient.editStatus(null, {
+            name: `Testing`,
             type: 0,
         } );
     }
 
     // disabled
-    $sendFullHelp(msg) {
+    // eslint-disable-next-line no-unused-vars
+    $sendFullHelp(msg, guildConfig) {
         // override sendFullHelp method
-        return this.axonUtils.sendMessage(msg.channel, 'Full Help');
+        return this.axonUtils.sendMessage(msg.channel, 'Full Help override');
     }
 
     // disabled
-    $sendHelp(command) {
+    // eslint-disable-next-line no-unused-vars
+    $sendHelp(command, env) {
         // override sendHelp method
-        return this.axonUtils.sendMessage(msg.channel, `Command help for ${command.label}`);
+        return this.axonUtils.sendMessage(env.msg.channel, `Help override for ${command.label}`);
     }
 }
 
