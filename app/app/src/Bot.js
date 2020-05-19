@@ -1,22 +1,21 @@
-import Eris from 'eris';
+const Eris = require('eris');
 
-import { AxonOptions } from 'axoncore';
-import Client from './Client';
-import botConfig from './JSON/BotConfig.json';
-import Utils from './Utils';
-import Database from './DataSetup'
+const { AxonOptions } = require('axoncore');
+
+const Client = require('./Client.js');
+
+const botConfig = require('./configs/config.json');
+const secret = require('./configs/secret.json');
+const lang = require('./configs/lang.json');
+
+const MyUtils = require('./Utils');
 
 const axonOptions = new AxonOptions( {
     prefixes: botConfig.prefixes,
     settings: botConfig.settings,
-    "english": {
-        "ERR_BOT_PERM": "Please give me {{permissions}} to do this!",
-        "ERR_CALLER_PERM": "You need {{permissions}} to do that!",
-        "ERR_DESTINATION_PERM": "This user is a moderator/admin so I can't do that!",
-        "ERR_COOLDOWN": "You are on a cooldown! Remaining: **{{cooldown}}**",
-        "ERR_GENERAL": "A error has accured, if you keep having this issue contact the developer team."
-    },
+    lang,
     logo: null,
+
     info: botConfig.info,
     staff: botConfig.staff,
     template: botConfig.template,
@@ -24,18 +23,24 @@ const axonOptions = new AxonOptions( {
         param: 1,
     },
 },
+secret.webhooks,
 {
-    utils: Utils,
-    logger: null,
-    DBProvider: 'Mongoose',
+    utils: MyUtils, // use your own Utils
+    logger: null, // custom Logger
+    DBProvider: null, // custom DB Service
     DBLocation: `${__dirname}/Database/`,
+
     axonConfig: null,
     guildConfig: null,
 } );
 
-
+/**
+ * new AxonClient(token, erisOptions, AxonOptions, modules)
+ *
+ * new Client(token, erisOptions, AxonOptions) => Modules imported in Client
+ */
 const client = new Eris.Client(
-    botConfig["settings"]["token"],
+    secret.bot.token,
     {
         autoreconnect: true,
         defaultImageFormat: 'png',
@@ -55,4 +60,4 @@ const Bot = new Client(
     axonOptions,
 );
 
-export default Bot;
+module.exports = Bot;
