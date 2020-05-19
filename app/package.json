@@ -1,31 +1,35 @@
 {
-    "name": "diamondbot",
-    "version": "1.0.0",
-    "description": "",
-    "author": "Trixy boi",
-    "license": "MIT",
-    "engines": {
-      "node": ">=8.0.0"
-    },
-    "dependencies": {
-      "axoncore": "^2.0.0",
-      "chalk": "^2.4.2",
-      "eris": "^0.13.1",
-      "pm2": "^4.2.1"
-    },
-    "devDependencies": {
-      "@axonteam/eslint-config": "^2.2.1",
-      "eslint": "^6.8.0"
-    },
-    "main": "./src/DataSetup.js",
-    "scripts": {
-      "start": "node -r esm src/DataSetup.js",
-      "start:pm2": "pm2 start scripts/start.config.js"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+"
-    },
-    "homepage": ""
+  "//1": "describes your app and its dependencies",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "updating this file will download and update your packages",
+  "name": "hello-express",
+  "version": "0.0.1",
+  "description": "A simple Node app built on Express, instantly up and running.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axoncore": "^2.0.1",
+    "eris": "^0.13.1",
+    "chalk": "^4.0.0",
+    "pm2": "^4.4.0",
+    "eslint": "^6.8.0",
+    "@axonteam/eslint-config": "^2.2.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
+
   }
     
